@@ -1,9 +1,7 @@
 [package]
 name = "spec_an_calibrator"
 version = "0.1.0"
-authors = ["oebee"]
+authors = ["larrym"]
 edition = "2018"
-
-# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
