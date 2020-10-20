@@ -2,8 +2,9 @@ use std::io::{self, prelude::*};
 use std::net::TcpStream;
 use tui::Terminal;
 use tui::backend::CrosstermBackend;
-use tui::widgets::{Widget, Block, Borders};
+use tui::widgets::{Widget, Block, Borders, Paragraph, Wrap};
 use tui::layout::{Layout, Constraint, Direction};
+use tui::text::{Spans, Span};
 
 fn main() -> std::io::Result<()> {
     let stdout = io::stdout();
@@ -30,10 +31,16 @@ fn main() -> std::io::Result<()> {
             .title("Block 2")
             .borders(Borders::ALL);
         f.render_widget(block,chunks[1]);
+
         let block = Block::default()
             .title("Block 3")
             .borders(Borders::ALL);
-        f.render_widget(block,chunks[2]);
+        let text = vec![
+            Spans::from("This is some test text This is some test text This is some test text This is some test text This is some test text This is some test text This is some test text This is some test text This is some test text This is some test text This is some test text This is some test text This is some test text This is some test text This is some test text This is some test text This is some test text This is some test text This is some test text This is some test text This is some test text "),
+        ];
+        let paragraph = Paragraph::new(text).block(block).wrap(Wrap {trim: true});
+        f.render_widget(paragraph, chunks[2]);
+        //f.render_widget(block,chunks[2]);
     })?;
 
     let mut stream = TcpStream::connect("localhost:8080")?;
