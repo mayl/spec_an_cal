@@ -4,5 +4,5 @@ let
   pkgs = import sources.nixpkgs{};
 in
 pkgs.mkShell {
-    buildInputs = [ rust ];
+    buildInputs = [ rust pkgs.pkgsCross.mingwW64.gcc ];
 }
